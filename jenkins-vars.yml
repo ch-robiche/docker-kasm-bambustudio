@@ -1,27 +1,34 @@
 ---
 
 # jenkins variables
-project_name: docker-orcaslicer
+project_name: docker-bambustudio
 external_type: github_stable
 release_type: stable
 release_tag: latest
 ls_branch: master
+external_artifact_check: |
+  assets=$(curl -u "${{ '{{' }} secrets.CR_USER {{ '}}' }}:${{ '{{' }} secrets.CR_PAT {{ '}}' }}" -sX GET "https://api.github.com/repos/bambulab/BambuStudio/releases/tags/${EXT_RELEASE}" | jq -r '.assets[].browser_download_url')
+  if grep -q "Bambu_Studio_linux_fedora" <<< "${assets}"; then
+    artifacts_found="true"
+  else
+    artifacts_found="false"
+  fi
 repo_vars:
-  - EXT_USER = 'SoftFever'
-  - EXT_REPO = 'OrcaSlicer'
-  - BUILD_VERSION_ARG = 'ORCASLICER_VERSION'
+  - EXT_USER = 'bambulab'
+  - EXT_REPO = 'BambuStudio'
+  - BUILD_VERSION_ARG = 'BAMBUSTUDIO_VERSION'
   - LS_USER = 'linuxserver'
-  - LS_REPO = 'docker-orcaslicer'
-  - CONTAINER_NAME = 'orcaslicer'
-  - DOCKERHUB_IMAGE = 'linuxserver/orcaslicer'
-  - DEV_DOCKERHUB_IMAGE = 'lsiodev/orcaslicer'
-  - PR_DOCKERHUB_IMAGE = 'lspipepr/orcaslicer'
+  - LS_REPO = 'docker-bambustudio'
+  - CONTAINER_NAME = 'bambustudio'
+  - DOCKERHUB_IMAGE = 'linuxserver/bambustudio'
+  - DEV_DOCKERHUB_IMAGE = 'lsiodev/bambustudio'
+  - PR_DOCKERHUB_IMAGE = 'lspipepr/bambustudio'
   - DIST_IMAGE = 'ubuntu'
   - MULTIARCH = 'false'
   - CI = 'true'
   - CI_WEB = 'true'
-  - CI_PORT = '3000'
-  - CI_SSL = 'false'
+  - CI_PORT = '3001'
+  - CI_SSL = 'true'
   - CI_DELAY = '120'
   - CI_DOCKERENV = 'TZ=US/Pacific'
   - CI_AUTH = 'user:password'
