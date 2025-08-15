@@ -12,8 +12,8 @@ LABEL maintainer=“thelamer”
 
 # title
 
-ENV TITLE=BambuStudio   
-SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
+ENV TITLE=BambuStudio
+ENV SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
 
 RUN   
 echo “**** add icon ****” &&   
