@@ -39,6 +39,8 @@ Find us at:
 
 [Bambu Studio](https://bambulab.com/en/download/studio) is an open-source, cutting-edge, feature-rich slicing software. It contains project-based workflows, systematically optimized slicing algorithms, and an easy-to-use graphical interface, bringing users an incredibly smooth printing experience.
 
+This container integrates Bambu Studio with [KASM](https://kasmweb.com/) technology, providing a web-based interface that allows you to access and use Bambu Studio directly from your browser without needing to install it locally. This makes it perfect for remote access, headless servers, or any situation where you need to run Bambu Studio without a local desktop environment.
+
 [![bambustudio](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/bambustudio-logo.png)](https://bambulab.com/en/download/studio)
 
 ## Supported Architectures
